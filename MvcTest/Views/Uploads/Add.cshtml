@@ -1,0 +1,30 @@
+﻿@model MvcTest.Models.Views.UploadViewModel
+
+<h2>Add</h2>
+
+@using (Html.BeginForm("Add", "Uploads", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+@Html.AntiForgeryToken()
+<div>
+    <fieldset>
+        <legend>Dodaj plik</legend>
+        <div>
+            @Html.LabelFor(m => Model.Description)
+            @Html.EditorFor(m => Model.Description)
+        </div>
+        <br /><br />
+
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.UserFile, new { type = "file" })
+        </div>
+
+        <div class="editor-field">
+            <input type="submit" value="Upload" />
+        </div>
+    </fieldset>
+
+
+
+
+</div>
+}

@@ -1,0 +1,23 @@
+﻿@model MvcTest.Models.Views.FileViewModel
+
+<h2>ShowImages</h2>
+
+@using (Html.BeginForm())
+{
+@Html.AntiForgeryToken()
+<div>
+    @for(int i = 0; i < Model.UserFiles.Count; i++)
+    {
+        <hr />
+        @Html.Raw(Model.UserFiles[i].Description);
+        <br />
+        if(Model.UserFiles[i].Name != null)
+        {
+            <a href="@Url.Action("Download","Uploads", new { id = Model.UserFiles[i].Id })">Pobierz: @Model.UserFiles[i].Name</a>
+            <br />
+            @Html.ActionLink("Delete: " + Model.UserFiles[i].Name, "Delete", new { id = Model.UserFiles[i].Id })
+        }
+        
+    }
+</div>
+}
